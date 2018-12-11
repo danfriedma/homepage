@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+  </head>
+  <style type="text/css">
+    .cell {
+      height: 1px;
+      width: 1px;
+      float: left;
+    }
+    .controls {
+      margin: auto;
+      padding: 1em;
+    }
+    canvas {
+      display: block;
+      margin: auto;
+      padding: 1em;
+    }
+    input {
+      display: block;
+      width: 100%;
+    }
+    input[type=range] {
+      height: 26px;
+      -webkit-appearance: none;
+      margin: 10px 0;
+      width: 100%;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 20px;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: 0px 0px 0px #000000;
+      background: #CFF7FF;
+      border-radius: 14px;
+      border: 0px solid #000000;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      box-shadow: 0px 0px 0px #000000;
+      border: 0px solid #000000;
+      height: 20px;
+      width: 40px;
+      border-radius: 12px;
+      background: #529DE1;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: 0px;
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+      background: #CFF7FF;
+    }
+    input[type=range]::-moz-range-track {
+      width: 100%;
+      height: 20px;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: 0px 0px 0px #000000;
+      background: #CFF7FF;
+      border-radius: 14px;
+      border: 0px solid #000000;
+    }
+    input[type=range]::-moz-range-thumb {
+      box-shadow: 0px 0px 0px #000000;
+      border: 0px solid #000000;
+      height: 20px;
+      width: 40px;
+      border-radius: 12px;
+      background: #529DE1;
+      cursor: pointer;
+    }
+    input[type=range]::-ms-track {
+      width: 100%;
+      height: 20px;
+      cursor: pointer;
+      animate: 0.2s;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+    input[type=range]::-ms-fill-lower {
+      background: #CFF7FF;
+      border: 0px solid #000000;
+      border-radius: 28px;
+      box-shadow: 0px 0px 0px #000000;
+    }
+    input[type=range]::-ms-fill-upper {
+      background: #CFF7FF;
+      border: 0px solid #000000;
+      border-radius: 28px;
+      box-shadow: 0px 0px 0px #000000;
+    }
+    input[type=range]::-ms-thumb {
+      margin-top: 1px;
+      box-shadow: 0px 0px 0px #000000;
+      border: 0px solid #000000;
+      height: 20px;
+      width: 40px;
+      border-radius: 12px;
+      background: #529DE1;
+      cursor: pointer;
+    }
+    input[type=range]:focus::-ms-fill-lower {
+      background: #CFF7FF;
+    }
+    input[type=range]:focus::-ms-fill-upper {
+      background: #CFF7FF;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+    label {
+      display: block;
+      font-size: 2.4em;
+    }
+    .reset {
+      margin: 3em auto;
+      width: 66%;
+      font-size: 1.4em;
+      border-radius: 35px;
+      background-color: aquamarine;
+    }
+  </style>
+
+  <body>
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-lg-1-2">
+        <div id="chart"></div>
+      </div>
+      <div class="pure-u-1 pure-u-lg-1-2">
+        <div class="controls">
+          <label>Gain</label>
+            <input type="range" id="Gain" min="0" max="1000" value="479" step="1" onInput="changeHandler(this)">
+            <!-- <output id="output-Gain"></output> -->
+          <label>Coupling</label>
+            <input type="range" id="Coupling" min="0" max="1000" value="867" step="1" onInput="changeHandler(this)">
+            <!-- <output id="output-Coupling"></output> -->
+
+          <label>Color</label>
+            <input type="range" id="Color" min="0.01" max="1" value="0.5" step="0.01" onInput="changeHandler(this)">
+            <!-- <output id="output-Color"></output> -->
+
+          <input class="reset" type="button" id="Reset" value="Reset" onClick="reset(this)">
+        </div>
+      </div>
+      <div class="controls pure-u-1">
+        <h3>Original exploration by Ralph Abraham <a href="http://www.ralph-abraham.org/articles/MS%2352.Logistic/ms52.pdf" target="_blank" >published work here</a></h3>
+      </div>
+    </div>
+
+
+    <script type="text/javascript" src="bundle.js"></script>
+  </body>
+</html>
+

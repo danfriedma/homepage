@@ -1,0 +1,6 @@
+use canvas bitmap API for rendering
+
+
+openGL implementation
+try haskell openGL
+try C++ openGL

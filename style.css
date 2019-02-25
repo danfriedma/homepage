@@ -72,42 +72,80 @@ li a:hover {
 }
 
 #info #info-content h1 {
-  color: #fff;
-  border: 3px solid #fff;
+  color: white;
   text-align: center;
   background: rgba(0, 0, 0, 0.1);
-  font-size: 22px;
+  font-size: 28px;
   font-weight: normal;
+  letter-spacing: 0.03em;
   padding: 20px;
   margin: 10px;
   display: inline-block;
 }
 
-#info #info-content h1 strong {
+#welcome {
+  position: relative;
+  color: white;
+  text-align: center;
+  height: 100vh;
+  background: #fff url(./assets/IMG_2513.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+}
+
+.welcome-text {
+  margin: 0 auto;
+  padding: 1em;
+  width: 75%;
+  color: lightpink;
+  font-size: 1.2em;
+  letter-spacing: 0.03em;
+  text-align: center;
   display: block;
-  font-size: 26px;
+}
+
+.welcome-bottom {
+  position: absolute;
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 1.8em;
+  text-align: center;
+  bottom: 3em;
+  left: 0;
+  right: 0;
+  width: 75%;
+}
+
+#alchemy {
+}
+
+.alchemy-desc {
+  padding: 1em;
 }
 
 #main {
-  background: #fff url(./fabric_gold_fit.png);
+  background: #fff url(./assets/fabric_gold_fit.png);
 }
 
 #offerings {
   background: #e4f6f9;
-  box-shadow: inset 60px 0 120px #fff, inset -60px 0 120px #fff;
+  box-shadow: inset 10px 10px 30px #fff, inset -10px -10px 30px #fff;
 }
 
 .offer {
   padding: 1em;
-  background-image: url(./portal.png);
-  background-size: auto 60%;
-  background-position: 50% 70%;
-  background-repeat: no-repeat;
+}
+
+.testimonial {
+  padding: 0.6em;
+  line-height: 1.2em;
 }
 
 .offer-bottom {
   width: 50%;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -128,6 +166,40 @@ li a:hover {
   vertical-align: middle;
 }
 
+.portal {
+  display: block;
+  margin: auto;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.back-spinner {
+  position: relative;
+  text-align: center;
+  top: 0;
+  right: 0;
+}
+
+.github {
+  padding: 0 1em;
+}
+
+.github:hover {
+  opacity: 0.6;
+}
+
+.past-work-intro {
+  padding: 1em 0;
+}
+
+.past-work-desc {
+  padding: 2em;
+}
+
+.quotation {
+  padding: 4em;
+}
+
 .openbtn {
     position: fixed;
     top: 0;
@@ -136,8 +208,7 @@ li a:hover {
     padding: 0.2em;
     font-size: 36px;
     margin-left: 50px;
-    background: white;/*
-    background: #fff url(./iching_earth.png) 50% 50%/25px 25px no-repeat;*/
+    background: white;
 }
 
 /* The side navigation menu */

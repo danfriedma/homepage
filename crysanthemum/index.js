@@ -11,14 +11,14 @@ run({
   gridSize:  128,
   pixels: 4,
   // constants in the range [0,1000]
-  Gain: 950,
-  Coupling: 900,
+  Gain: 560,
+  Coupling: 860,
   // control parameter, computed property coupled to Gain
   r: undefined,
   // number of iterations to strobe through per animation cycle
   iterations: 1,
   //color
-  Color: 0.5
+  Color: 0.25
 })
 
 function updateR(params) {

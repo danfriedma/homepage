@@ -1,4 +1,5 @@
 var _ = require('lodash')
+var d3 = require('d3')
 
 function randomMatrix(params) {
   // randomized initialization
@@ -33,7 +34,29 @@ function circleMatrix(params) {
     })
 }
 
+function hexagonMatrix(params) {
+  var points = [
+    [(params.gridSize/2) + 1, 0],
+    [params.gridSize*0.06698, params.gridSize*.25],
+    [params.gridSize*0.06698, params.gridSize*.75],
+    [params.gridSize/2, params.gridSize - 1],
+    [params.gridSize - (params.gridSize*0.06698), params.gridSize*.75],
+    [params.gridSize - (params.gridSize*0.06698), params.gridSize*0.25],
+    [(params.gridSize/2) + 1, 0]
+  ]
+  var hull = d3.polygonHull(points)
+
+  return torus = _.map(_.range(params.gridSize),
+    function(i) {
+      return _.map(_.range(params.gridSize),
+        function(j) {
+          return !d3.polygonContains(hull,[i,j])
+        })
+    })
+}
+
 module.exports = function initializeMatrix(params) {
   if (params.matrixType == 'random') return randomMatrix(params)
   return circleMatrix(params)
+  //return hexagonMatrix(params)
 }

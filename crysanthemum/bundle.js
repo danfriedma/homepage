@@ -12,14 +12,14 @@ run({
   gridSize:  128,
   pixels: 4,
   // constants in the range [0,1000]
-  Gain: 950,
-  Coupling: 900,
+  Gain: 560,
+  Coupling: 860,
   // control parameter, computed property coupled to Gain
   r: undefined,
   // number of iterations to strobe through per animation cycle
   iterations: 1,
   //color
-  Color: 0.5
+  Color: 0.25
 })
 
 function updateR(params) {
@@ -164,6 +164,7 @@ function run(params) {
 
 },{"./matrix":2,"d3":6,"d3-scale-chromatic":5,"lodash":7}],2:[function(require,module,exports){
 var _ = require('lodash')
+var d3 = require('d3')
 
 function randomMatrix(params) {
   // randomized initialization
@@ -198,11 +199,33 @@ function circleMatrix(params) {
     })
 }
 
+function hexagonMatrix(params) {
+  var points = [
+    [(params.gridSize/2) + 1, 0],
+    [params.gridSize*0.06698, params.gridSize*.25],
+    [params.gridSize*0.06698, params.gridSize*.75],
+    [params.gridSize/2, params.gridSize - 1],
+    [params.gridSize - (params.gridSize*0.06698), params.gridSize*.75],
+    [params.gridSize - (params.gridSize*0.06698), params.gridSize*0.25],
+    [(params.gridSize/2) + 1, 0]
+  ]
+  var hull = d3.polygonHull(points)
+
+  return torus = _.map(_.range(params.gridSize),
+    function(i) {
+      return _.map(_.range(params.gridSize),
+        function(j) {
+          return !d3.polygonContains(hull,[i,j])
+        })
+    })
+}
+
 module.exports = function initializeMatrix(params) {
   if (params.matrixType == 'random') return randomMatrix(params)
   return circleMatrix(params)
+  //return hexagonMatrix(params)
 }
-},{"lodash":7}],3:[function(require,module,exports){
+},{"d3":6,"lodash":7}],3:[function(require,module,exports){
 // https://d3js.org/d3-color/ Version 1.2.0. Copyright 2018 Mike Bostock.
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :

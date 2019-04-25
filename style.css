@@ -188,6 +188,10 @@ li a:hover {
   opacity: 0.6;
 }
 
+.past-work-heading {
+  padding: 1em 0;
+}
+
 .past-work-intro {
   padding: 1em 0;
 }

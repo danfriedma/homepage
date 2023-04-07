@@ -1,0 +1,91 @@
+.project {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+}
+.project:nth-child(odd) {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.projectInfo {
+  padding: 4em;
+}
+
+.projectInfo h1 {
+  font-size: 3.8em;
+  padding-bottom: .3em;
+  letter-spacing: .03em;
+}
+
+.projectInfo p span {
+  font-size: 1em;
+}
+
+.projectHeading {
+  font-weight: 900;
+}
+
+.projectChallenge, .projectSolution {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-bottom: 40px;
+}
+
+.projectChallenge::before {
+  content: url('/square.svg');
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  /* background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #212429; */
+}
+
+.projectChallenge::after {
+  content: " ";
+  width: 1px;
+  top: 32px;
+  left: 9px;
+  bottom: 12px;
+  background-color: #000;
+  position: absolute;
+}
+
+.projectSolution::before {
+  content: url('/star.svg');
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 4px;
+  top: 1px;
+}
+
+
+
+@media (max-width: 700px) {
+  .project {
+    min-height: 20vh;
+    padding-top: 2em;
+  }
+
+  .project:nth-child(odd) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .projectInfo {
+    padding: 0em 2em;
+  }
+
+  .projectInfo h1 {
+    font-size: 2.3em;
+    letter-spacing: .02em;
+  }
+}

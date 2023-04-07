@@ -9,7 +9,7 @@ var canvas, context, torus, windowWidth
 
 run({
   // n for an n x n matrix
-  gridSize:  128,
+  gridSize: 128,
   pixels: 4,
   // constants in the range [0,1000]
   Gain: 560,
@@ -63,6 +63,7 @@ function averageNeighbors(torus, params, i, j) {
   var right = ((j + 1) > (params.gridSize - 1)) ? 0 : (j + 1)
   var down = ((i + 1) > (params.gridSize - 1)) ? 0 : (i + 1)
   var left = ((j - 1) < 0) ? params.gridSize - 2 : (j - 1)
+
   // return average
   return (
     torus[up][j] +
@@ -112,16 +113,21 @@ function run(params) {
   windowWidth = window.innerWidth
 
   canvas = document.createElement('canvas')
-  if (windowWidth < 512) {
-    params.pixels = 2
-  }
+  document.getElementById("chart").appendChild( canvas )
+  //canvas.setAttribute("id", "dynamata");
+  console.log(canvas)
+  // if (windowWidth < 512) {
+  //   params.pixels = 2
+  // }
+  params.pixels = params.pixels = (window.innerWidth > window.innerHeight) ?
+    window.innerHeight/params.gridSize : window.innerWidth/params.gridSize
 
-  canvas.width = params.gridSize * params.pixels
+  canvas.width = window.innerWidth //params.gridSize * params.pixels
   canvas.height = canvas.width
 
   context = canvas.getContext('2d')
 
-  document.getElementById("chart").appendChild( canvas )
+  //document.body.appendChild( canvas )
 
   // Register UI handlers
   window.changeHandler = function changeHandler(event) {
@@ -135,27 +141,38 @@ function run(params) {
   }
 
   window.addEventListener("resize", function resize(event) {
-    if (windowWidth >= 512 && window.innerWidth < 512) {
 
-      params.pixels = 2
+    // canvas.width = canvas.height = (window.innerWidth > window.innerHeight) ?
+    //   window.innerHeight/params.gridSize : window.innerWidth/params.gridSize
+
+      params.pixels = (window.innerWidth > window.innerHeight) ?
+        window.innerHeight/params.gridSize : window.innerWidth/params.gridSize
       canvas.width = params.gridSize * params.pixels
       canvas.height = canvas.width
-    }
-    if (windowWidth < 512 && window.innerWidth >= 512) {
-      params.pixels = 4
-      canvas.width = params.gridSize * params.pixels
-      canvas.height = canvas.width
-    }
-    windowWidth = window.innerWidth
+
+    // if (windowWidth >= 512 && window.innerWidth < 512) {
+    //
+    //   params.pixels = 2
+    //   canvas.width = params.gridSize * params.pixels
+    //   canvas.height = canvas.width
+    // }
+    // if (windowWidth < 512 && window.innerWidth >= 512) {
+    //   params.pixels = 4
+    //   canvas.width = params.gridSize * params.pixels
+    //   canvas.height = canvas.width
+    // }
+    // windowWidth = window.innerWidth
   }
 )
 
   // initialize torus
   torus = initializeMatrix(params)
-
+  let count = 0
   function animate () {
-    window.requestAnimationFrame(animate)
     draw(params)
+    count++
+
+    window.requestAnimationFrame(animate)
   }
 
   animate()
